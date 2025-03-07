@@ -5,10 +5,7 @@ const photos = [
     url: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800',
     caption: 'First Date'
   },
-  {
-    url: 'https://images.unsplash.com/photo-1514994667787-b48ca37155f0?auto=format&fit=crop&q=80&w=800',
-    caption: 'Coffee Shop Meeting'
-  },
+  
   {
     url: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=800',
     caption: 'The Proposal'
