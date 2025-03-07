@@ -32,7 +32,7 @@ export const weddingDetails: WeddingDetails = {
         date: "2020-06-15",
         title: "First Meeting",
         description: "We met at a local coffee shop in San Francisco, both reaching for the same coffee cup by mistake.",
-        imageUrl: "https://images.unsplash.com/photo-1514994667787-b48ca37155f0?auto=format&fit=crop&q=80&w=800"
+        imageUrl: "https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&q=80&w=800"
       },
       {
         date: "2021-12-24",
