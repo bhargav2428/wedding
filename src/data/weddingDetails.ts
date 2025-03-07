@@ -5,7 +5,7 @@ export const weddingDetails: WeddingDetails = {
     partner1: "Lorah",
     partner2: "Antony"
   },
-  date: "2024-09-21T16:00:00.000Z",
+  date: "2025-09-21T16:00:00.000Z",
   venues: {
     ceremony: {
       name: "St. Mary's Cathedral",
