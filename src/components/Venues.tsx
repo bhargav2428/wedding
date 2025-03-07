@@ -1,3 +1,8 @@
+'use client';
+
+import { useEffect } from 'react';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import { motion } from 'framer-motion';
 import { MapPin, Clock } from 'lucide-react';
 import { WeddingDetails } from '../types';
@@ -11,6 +16,20 @@ export function Venues({ venues }: VenuesProps) {
     { title: 'Ceremony', ...venues.ceremony },
     { title: 'Reception', ...venues.reception },
   ];
+
+  useEffect(() => {
+    venuesList.forEach((venue, index) => {
+      const mapId = `map-${index}`;
+      setTimeout(() => {
+        const map = L.map(mapId).setView([venue.coordinates.lat, venue.coordinates.lng], 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; OpenStreetMap contributors',
+        }).addTo(map);
+        L.marker([venue.coordinates.lat, venue.coordinates.lng]).addTo(map)
+          .bindPopup(`<b>${venue.title}</b><br>${venue.address}`).openPopup();
+      }, 300);
+    });
+  }, [venuesList]);
 
   return (
     <section className="py-20 px-4 bg-gray-50">
@@ -26,19 +45,12 @@ export function Venues({ venues }: VenuesProps) {
               transition={{ delay: index * 0.2 }}
               className="bg-white rounded-lg shadow-lg overflow-hidden"
             >
+              {/* OpenStreetMap Container */}
               <div className="h-64 relative">
-                <iframe
-                  title={`${venue.title} Map`}
-                  width="100%"
-                  height="100%"
-                  frameBorder="0"
-                  style={{ border: 0 }}
-                  src={`https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${encodeURIComponent(
-                    venue.address
-                  )}&center=${venue.coordinates.lat},${venue.coordinates.lng}`}
-                  allowFullScreen
-                />
+                <div id={`map-${index}`} className="h-full w-full" />
               </div>
+              
+              {/* Venue Details */}
               <div className="p-6">
                 <h3 className="text-2xl font-serif mb-4">{venue.title}</h3>
                 <div className="space-y-3">
